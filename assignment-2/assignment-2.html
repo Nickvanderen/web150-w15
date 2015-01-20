@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Swashbuckling Swindlers</title>
+        <meta charset="utf8">
+    </head>
+
+<body>
+    
+<img src="pirates.jpg" alt="pirates">
+
+
+    
+    
+    
+
+
+    <script>
+var ok = confirm("You awake to the clanging of cutlasses and blasts of cannon fire, press OK to continue");
+
+if (ok) {
+    //contine
+    
+} else {
+    //cancel
+    console.log("Your sense of adventure is lacking greatly...");
+}
+
+var ok = confirm ("You stagger toward the amory and open the door...press OK to continue");
+
+if (ok) {
+    //continue
+    var cannonBall = prompt("Four different cannnonballs lay in a pile just in front of you pick 1, 2, 3 or 4.")
+    if (cannonBall == 1) {
+        console.log("Avast! This rusty cannonball will do the trick, hopefully... ");
+    } else if (cannonBall == 2) {
+        console.log("Blast! This is just a coconut upon closer inspection...");
+    } else if (cannonBall == 3) {
+        console.log("Excellent! The spiked dweller cannonball is sure to rupture the enemy ship!");
+    } else {
+        console.log("Good choice! It's the flaming voodoo cannonball of doom, the pirates don't stand a chance!");
+        
+        var coins = "You find a small chest stuffed with a couple hundred gold doubloons, how many coins do you take for your share?";
+        var treasure = prompt(coins);
+        coins = Number(treasure);
+        
+        if (coins >10) {
+            console.log("You've acted honorably and claimed your fair share of the booty!");
+        } else if (coins <10){
+            console.log("RWAHAHA! You fool! You'll never be Captain!");
+        } else { (coins ==100)  
+            console.log("Your greed is insatiable and the crew has marooned you!");  
+        }
+        console.log("Aaarrgh, this tale is finished...");
+    }    
+} else {
+    //cancel
+    console.log("Your sense of adventure is lacking greatly...");
+      
+}    
+    
+    </script>
+</body>
+</html>
