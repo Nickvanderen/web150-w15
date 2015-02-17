@@ -150,7 +150,7 @@ var filterButtons = $(".filter");
 filterButtons.on("click", function() {
     var $this = $(this);
     var filter = $this.attr("data-filter")  //get data and store in this attribute
-    //hide  all buttons
+    //hide  all tr
     tr.hide();
     //show data matching the filter
     var selector = "." + filter;
