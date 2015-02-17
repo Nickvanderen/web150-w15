@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>Assignment 6</title>
+    
+    <style>
+body {
+    font-family: Helvetica;
+}
+    
+table {
+    margin: 0 auto;
+    text-align: left;
+}
+
+.small { background: #80CC80;}  /* mint */
+.medium { background: #FF944D;}    /* light orange */
+.large { background: #A366A3;}  /* lavender */
+    
+
+    </style>
+</head>
+
+<body>
+    
+    <button class="reset">Reset</button>
+    <button class="filter" data-filter="small">Small</button>
+    <button class="filter" data-filter="medium">Medium</button>
+    <button class="filter" data-filter="large">Large</button>
+            
+    <table>
+        <thead>
+          <tr>
+            <th width="100">Name</th>
+            <th width="150">Breed</th>
+            <th width="100">Color</th>
+            <th width="100">Sex</th>
+            <th width="100">Size</th>
+          </tr>
+        </thead>
+    <tbody>
+        <tr class="large">
+            <td>Godefroy</td>   <!-- 1 -->
+            <td>English Mastiff</td>
+            <td>Blonde</td>
+            <td>Male</td>
+            <td>Large</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="small">
+            <td>Lucy</td>   <!-- 2 -->
+            <td>Am. Eskimo Dog</td>
+            <td>White</td>
+            <td>Female</td>
+            <td>Small</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="small">
+            <td>Brax</td>   <!-- 3 -->
+            <td>Griffon Bruxellois</td>
+            <td>Brown</td>
+            <td>Male</td>
+            <td>Small</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="medium">
+            <td>Clifton</td>   <!-- 4 -->
+            <td>German Pointer</td>
+            <td>Brown</td>
+            <td>Male</td>
+            <td>Medium</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="small">
+            <td>Svetlana</td>   <!-- 5 -->
+            <td>Tibetan Spaniel</td>
+            <td>Brown</td>
+            <td>Female</td>
+            <td>Small</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="large">
+            <td>Bella</td>   <!-- 6 -->
+            <td>Aussie Cattle Dog</td>
+            <td>Black</td>
+            <td>Female</td>
+            <td>Large</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="medium">
+            <td>Mitzy</td>   <!-- 7 -->
+            <td>Jack Russel Terrier</td>
+            <td>White</td>
+            <td>Female</td>
+            <td>Medium</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="large">
+            <td>Jasper</td>   <!-- 8 -->
+            <td>Lab</td>
+            <td>Blonde</td>
+            <td>Male</td>
+            <td>Large</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="medium">
+            <td>Rufus</td>   <!-- 9 -->
+            <td>Basset Hound</td>
+            <td>Black</td>
+            <td>Male</td>
+            <td>Medium</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="medium">
+            <td>Mac</td>   <!-- 10 -->
+            <td>Chow Chow</td>
+            <td>Blonde</td>
+            <td>Male</td>
+            <td>Medium</td>
+        </tr>
+    </tbody>
+    </table>
+
+    <script src="http://code.jquery.com/jquery-2.1.3.min.js">
+    </script>
+
+    <script>
+//create variable for buttons small medium and large that represent table row "tr" size
+//add a class to each value so js can find the desired information
+//var buttons find tr with a class of "small"
+//with a class of "medium"
+//with a class of "large"
+//var for table reset
+
+var table = $("table");
+var tr = $("tr");
+
+var filterButtons = $(".filter");
+filterButtons.on("click", function() {
+    var $this = $(this);
+    var filter = $this.attr("data-filter")  //get data and store in this attribute
+    //hide  all buttons
+    tr.hide();
+    //show data matching the filter
+    var selector = "." + filter;
+    tr.filter(selector).show();
+});
+
+var allButton = $(".reset");
+allButton.on("click", function() {
+    table.show();
+});
+
+
+var filterButtons = $(".filter");
+filterButtons.on("click", function(){
+    var $this = $(this);
+    var filter = $this.attr("data-filter");
+    var selector = "."; + filter;
+    table.filter(selector).show();
+});
+
+var resetButton = $(".reset");
+resetButton.on("click", function() {
+    table.show();
+});
+        
+    </script>
+</body>
+</html>
