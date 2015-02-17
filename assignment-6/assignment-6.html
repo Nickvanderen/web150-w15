@@ -15,9 +15,9 @@ table {
     text-align: left;
 }
 
-.small { background: #80CC80;}  /* mint */
-.medium { background: #FF944D;}    /* light orange */
-.large { background: #A366A3;}  /* lavender */
+.small {}
+.medium {}
+.large {}
     
 
     </style>
@@ -168,12 +168,12 @@ filterButtons.on("click", function(){
     var $this = $(this);
     var filter = $this.attr("data-filter");
     var selector = "."; + filter;
-    table.filter(selector).show();
+    tr.filter(selector).show();
 });
 
 var resetButton = $(".reset");
 resetButton.on("click", function() {
-    table.show();
+    tr.show();
 });
         
     </script>
