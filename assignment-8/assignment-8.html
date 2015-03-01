@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Irregular Expression</title>
+    <meta charset=utf8>
+        
+    <style>
+input {
+    display: block;
+    margin: 10px;
+}
+    </style>
+
+</head>
+
+    <body>
+    
+    <form>
+        <label>Vowels</label>
+        <input pattern="[aeiouy]" class="vowels"
+            data-error="Please enter only vowels">
+        <span class="error"></span>
+        
+        <label>Ending in . . .</label>
+        <input pattern="/^ing$/" class="ing"
+            data-error="Input must end in ing">
+        <span class="error"></span>
+        
+        <label>Numbers</label>
+        <input pattern="/[0-9_]+(.+-,\s)/" class="numbers"
+            data-error="Please enter a correct numerical pattern">
+        <span class="error"></span>
+        
+        <input type="submit" class="submit">
+    </form>
+    
+        <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+        <script>
+        
+        // #1 input that ONLY accepts vowels otherwise display an error message
+
+$('input[type=submit]').on('click', function(e) {
+
+var vowels = $(".vowels");
+vowels.on("change", function() {
+    var vowels = /[aeiouy]/;
+    var $this = $(this);
+    var value = $this.val();
+    var input = $input.pattern();
+    var valid = vowels.test(value);
+    if (valid) {
+        input.submit("outline", "1px solid green"); //if vowel outline input in green
+    } else {
+      e.preventDefault();  
+      var error = input.attr('data-error'); //if wrong display error message
+      input.next('.error').html(error);
+      input.addClass('invalid');
+    }
+});
+
+// #2 input that expects ending in ING if input doesnt match box turns ORANGE
+
+var ing = $(".ing");
+ing.on("change", function() {
+    var ing = /^ing$/;
+    var $this = $(this);
+    var value = $this.val();
+    var valid = ing.test(value);
+    if (valid) {
+        $this.css("outline", "");
+    } else {
+        $this.css("outline", "1 px solid orange");
+    }
+});
+
+// #3 input for numbers that can be negative, inlcude one decimal place or commas
+
+var numbers = $(".numbers");
+numbers.on("change", function() {
+    var numbers = /[0-9_.+-,\s]/;
+    var $this = $(this);
+    var value = $this.val();
+    var input = $input.pattern();
+    var valid = numbers.test(value);
+    if (valid) {
+        $this.css("outline", "");
+    } else {
+        var disabled = input.attr("disabled");
+        input.submit("disabled").html("error");
+        input.addClass("disabled");
+        }    
+    })
+});    
+            
+        </script>
+    </body>
+</html>
