@@ -2,7 +2,7 @@
   <html>
     <head>
       <meta charset=utf8>
-      <title>Assignment 9 Ajax</title>
+      <title>Assignment 9</title>
       <style>
 .output {
   border: 1px solid black;
@@ -14,7 +14,7 @@
   <body>
 
     <div class="output"></div>
-    <button class="load" data-cat="more">LOAD MORE</button>
+    <button class="update">LOAD MORE</button>
 
 
 
@@ -27,8 +27,7 @@ var update = $()
 var lastUpdate = 1;
 
 var whenDone = function(data) {
-  lastUpdate = data.at;
-  for (var i = 0; i <data.updates.length; i++) {
+  for (var i = 0; i <data.update.length; i++) {
     var update = data.update[i];
     var text = update.output + ": " + update.text + "<br>";
     output.append(text);
@@ -44,17 +43,11 @@ var getUpdate = function() {
     });
     request.done(whenDone);
 };
-var poll = function() {
+var getUpdate = function() {
   getUpdate();
 };
 
-poll();
-
-var sendUpdate = function() {
-  var update = inputUpdate.val();
-}
-
-var request = $.ajex({
+var request = $.ajax({
   url:"http://thomaswilburn.net:8080/social",
   type: "POST",
   data: JSON.stringify({
@@ -63,15 +56,9 @@ var request = $.ajex({
   })
 });
   request.done(whenDone);
+};
 
-
-loadButton.on("click", sendUpdate);
-inputUpdate.on("click", function(e) {
-  if (e.keyCode == 13) {
-    sendUpdate();
-  }
-});
-
+loadButton.("click", sendUpdate);
     </script>
   </body>
 </html>
