@@ -1,0 +1,57 @@
+<!doctype html>
+  <html>
+    <head>
+      <meta charset=utf8>
+      <title>Assignment 9 Ajax</title>
+      <style>
+.output {
+  border: 1px solid black;
+  height: 200px;
+  overflow: scroll;
+}
+      </style>
+    </head>
+  <body>
+
+    <div class="output"></div>
+    <button class="load" data-cat="more">LOAD MORE</button>
+
+
+
+    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script>
+
+$(".load").on("click", function() {
+  var $this = $(this);
+  var url = "http://thomaswilburn.net:8080/social";
+  var category = $this.attr("data-cat");
+  var request = $.ajax({
+    url: "http://thomaswilburn.net:8080/social",
+    cache: false,
+    data: {
+    category: category,
+    when: Date.now()
+  },
+  dataType: "jsonp"
+});
+request.done(function(data) {
+  console.log(data);
+  var output = $(".output");
+  output.html(data.answer); // start social media
+  if (data.category == "more") {
+    output.css("color", "blue");
+  } else {
+    output.css("color", "");
+  }
+});
+request.fail(function() {
+  var output = $(."output");
+  output.html("Error contacting server");
+});
+request.always(function() {
+  console.log("ALWAYS");
+  });
+});
+    </script>
+  </body>
+</html>
